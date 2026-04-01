@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply antialiased text-gray-900;
+  }
+}
+
+@layer components {
+  .animate-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  /* Markdown Styles */
+  .markdown-body {
+    @apply text-sm leading-relaxed;
+  }
+  .markdown-body p {
+    @apply mb-3;
+  }
+  .markdown-body code {
+    @apply bg-gray-200 px-1 py-0.5 rounded text-xs font-mono text-pink-600;
+  }
+  .markdown-body pre {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4 font-mono text-xs;
+  }
+  .markdown-body pre code {
+    @apply bg-transparent p-0 text-gray-100;
+  }
+  .markdown-body ul {
+    @apply list-disc pl-5 mb-3;
+  }
+  .markdown-body ol {
+    @apply list-decimal pl-5 mb-3;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

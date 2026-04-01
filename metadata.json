@@ -1,0 +1,5 @@
+{
+  "name": "AI Interview Prep Tool",
+  "description": "A modern web app to help developers prepare for interviews with role-specific questions and progress tracking.",
+  "requestFramePermissions": []
+}
