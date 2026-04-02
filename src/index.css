@@ -11,6 +11,19 @@
     animation: fadeIn 0.5s ease-out forwards;
   }
 
+  /* Blob Animation */
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
   /* Markdown Styles */
   .markdown-body {
     @apply text-sm leading-relaxed;
@@ -19,10 +32,10 @@
     @apply mb-3;
   }
   .markdown-body code {
-    @apply bg-gray-200 px-1 py-0.5 rounded text-xs font-mono text-pink-600;
+    @apply bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded text-xs font-mono text-pink-600 dark:text-pink-400;
   }
   .markdown-body pre {
-    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4 font-mono text-xs;
+    @apply bg-gray-900 dark:bg-gray-950 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4 font-mono text-xs;
   }
   .markdown-body pre code {
     @apply bg-transparent p-0 text-gray-100;
@@ -32,6 +45,21 @@
   }
   .markdown-body ol {
     @apply list-decimal pl-5 mb-3;
+  }
+  .markdown-body h1 {
+    @apply text-xl font-bold mb-3 mt-4;
+  }
+  .markdown-body h2 {
+    @apply text-lg font-bold mb-2 mt-3;
+  }
+  .markdown-body h3 {
+    @apply text-base font-bold mb-2 mt-2;
+  }
+  .markdown-body a {
+    @apply text-blue-600 dark:text-blue-400 hover:underline;
+  }
+  .markdown-body blockquote {
+    @apply border-l-4 border-blue-500 pl-4 py-2 text-gray-700 dark:text-gray-300 italic;
   }
 }
 
@@ -43,5 +71,17 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
   }
 }

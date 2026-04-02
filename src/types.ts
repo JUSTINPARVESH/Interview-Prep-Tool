@@ -1,4 +1,4 @@
-export type Role = 'Frontend Developer' | 'Backend Developer' | 'Full Stack Developer' | '';
+export type Role = 'Frontend Developer' | 'Backend Developer' | 'Full Stack Developer' | 'DevOps' | '';
 
 export interface Question {
   id: string;
@@ -10,4 +10,4 @@ export interface Question {
 }
 
 export type AppMode = 'study' | 'quiz';
-export type QuizType = 'mcq' | 'short';
+export type QuizType = 'mcq' | 'short' | 'mcq-count' | 'short-count';

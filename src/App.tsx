@@ -1,18 +1,43 @@
-import React, { useState } from 'react';
-import { Filter, Play, BookOpen } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Filter, Play } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import InputForm from './components/InputForm';
 import QuestionCard from './components/QuestionCard';
 import Quiz from './components/Quiz';
+import ThemeToggle from './components/ThemeToggle';
+import StreakWidget from './components/StreakWidget';
+import AchievementBadges from './components/AchievementBadges';
+import StatsOverlay from './components/StatsOverlay';
 import { Role, Question, AppMode } from './types';
 import { QUESTIONS } from './constants';
-
 import { ROLES } from './constants';
+import { useSettingsStore } from './store/settingsStore';
+import { useUserStore } from './store/userStore';
 
 export default function App() {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [activeQuestions, setActiveQuestions] = useState<Question[]>([]);
   const [mode, setMode] = useState<AppMode>('study');
+  
+  // Initialize stores
+  const { isDarkMode } = useSettingsStore();
+  const { initializeUser } = useUserStore();
+
+  useEffect(() => {
+    initializeUser();
+    
+    // Apply dark mode class to document
+    const updateDarkMode = () => {
+      const dark = isDarkMode();
+      if (dark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+    
+    updateDarkMode();
+  }, [isDarkMode, initializeUser]);
 
   const handleGenerate = () => {
     if (selectedFilters.length === 0) {
@@ -41,17 +66,51 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f4f4] py-12 px-4 sm:px-6 lg:px-8 font-sans">
-      <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <header className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl mb-3">
-            AI Interview Prep Tool
-          </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Search and filter by role, language, or specific technical skills.
-          </p>
-        </header>
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      {/* New UI Components */}
+      <StreakWidget />
+      <AchievementBadges />
+      
+      {/* Header with Theme Toggle */}
+      <div className="flex justify-end p-4 sm:p-6 fixed top-0 right-0 z-30">
+        <ThemeToggle />
+      </div>
+
+      {/* Premium Hero Section */}
+      <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 dark:from-blue-900 dark:via-blue-800 dark:to-indigo-900 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 dark:bg-blue-700 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500 dark:bg-indigo-700 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-1/2 w-96 h-96 bg-pink-500 dark:bg-indigo-800 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 pt-20 pb-24 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-tight mb-6">
+                Master Your
+                <span className="block bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">Interview Skills</span>
+              </h1>
+              <p className="text-xl sm:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed mb-8">
+                AI-powered interview prep with real-time grading, detailed feedback, and personalized learning paths.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+
+        {/* Stats Overview */}
+        {mode === 'study' && activeQuestions.length === 0 && (
+          <StatsOverlay />
+        )}
 
         {/* Filter Selection */}
         {mode === 'study' && (
@@ -67,27 +126,41 @@ export default function App() {
             {/* Study Mode Content */}
             {mode === 'study' && (
               <>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <AnimatePresence mode="popLayout">
-                    {activeQuestions.map((q) => (
-                      <QuestionCard
-                        key={q.id}
-                        question={q}
-                      />
-                    ))}
-                  </AnimatePresence>
-                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="mb-8"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <AnimatePresence mode="popLayout">
+                      {activeQuestions.map((q) => (
+                        <QuestionCard
+                          key={q.id}
+                          question={q}
+                        />
+                      ))}
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
 
                 {/* Quiz Button at the bottom */}
-                <div className="flex justify-center mt-12">
-                  <button
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex justify-center mt-16"
+                >
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                     onClick={startQuiz}
-                    className="flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-2xl transition-all shadow-xl hover:shadow-blue-200 group"
+                    className="flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-600 dark:hover:from-blue-600 dark:hover:to-indigo-700 text-white font-bold py-5 px-12 text-lg rounded-2xl transition-all shadow-2xl hover:shadow-3xl hover:shadow-blue-500/40 dark:hover:shadow-indigo-500/30 group"
                   >
-                    <Play size={24} className="fill-current group-hover:scale-110 transition-transform" />
+                    <Play size={26} className="fill-current group-hover:scale-110 transition-transform" />
                     Start Exam Quiz
-                  </button>
-                </div>
+                  </motion.button>
+                </motion.div>
               </>
             )}
 
@@ -98,19 +171,33 @@ export default function App() {
           </div>
         )}
 
-        {activeQuestions.length === 0 && (
-          <div className="mt-20 text-center opacity-40 select-none">
-            <div className="inline-block p-4 rounded-full bg-gray-200 mb-4">
-              <Filter size={48} className="text-gray-400" />
-            </div>
-            <p className="text-xl font-medium text-gray-500">Search for roles or skills to see relevant questions</p>
-          </div>
+        {activeQuestions.length === 0 && mode === 'study' && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="mt-32 text-center"
+          >
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 0.3 }}
+              transition={{ delay: 0.5 }}
+              className="inline-block mb-6"
+            >
+              <div className="p-5 rounded-full bg-gradient-to-br from-blue-200 to-indigo-200 dark:from-blue-900/40 dark:to-indigo-900/40">
+                <Filter size={56} className="text-blue-400 dark:text-blue-500" />
+              </div>
+            </motion.div>
+            <p className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">No questions yet</p>
+            <p className="text-gray-500 dark:text-gray-400 text-lg">Select roles or skills above to start your interview prep journey</p>
+          </motion.div>
         )}
       </div>
 
       {/* Footer */}
-      <footer className="mt-20 text-center text-gray-400 text-sm">
-        <p>&copy; {new Date().getFullYear()} AI Interview Prep Tool. All rights reserved.</p>
+      <footer className="mt-32 text-center py-8 border-t border-gray-200 dark:border-gray-800">
+        <p className="text-gray-600 dark:text-gray-400 font-medium mb-2">🚀 Master your interview skills with AI-powered feedback</p>
+        <p className="text-sm text-gray-500 dark:text-gray-500">&copy; {new Date().getFullYear()} AI Interview Prep Tool. Built with ❤️</p>
       </footer>
     </div>
   );
