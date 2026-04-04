@@ -27,13 +27,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
       whileHover={{ y: -4 }}
       className="group relative h-full"
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 dark:from-blue-500/10 dark:to-indigo-500/10 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300 -z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300 -z-10"></div>
       
-      <div className="h-full p-6 sm:p-7 rounded-2xl shadow-lg border-2 border-gray-100 dark:border-gray-700 transition-all duration-300 flex flex-col bg-white dark:bg-gray-800 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-2xl dark:hover:shadow-xl dark:hover:shadow-blue-900/30">
+      <div className="h-full p-6 sm:p-7 rounded-2xl shadow-lg border-2 border-gray-100 transition-all duration-300 flex flex-col bg-white hover:border-blue-300 hover:shadow-2xl">
         {/* Header */}
         <div className="flex items-start justify-between mb-5">
           <div className="flex-1">
-            <p className="text-lg sm:text-xl font-bold leading-relaxed text-gray-900 dark:text-white">
+            <p className="text-lg sm:text-xl font-bold leading-relaxed text-gray-900">
               {question.text}
             </p>
           </div>
@@ -41,11 +41,11 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-6">
-          <span className="px-3 py-1 text-xs font-bold text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/40 rounded-full border border-blue-300 dark:border-blue-700/50">
+          <span className="px-3 py-1 text-xs font-bold text-blue-700 bg-blue-100 rounded-full border border-blue-300">
             {question.role}
           </span>
           {question.skills.slice(0, 2).map(skill => (
-            <span key={skill} className="px-3 py-1 text-xs font-semibold text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-900/40 rounded-full border border-indigo-300 dark:border-indigo-700/50">
+            <span key={skill} className="px-3 py-1 text-xs font-semibold text-indigo-700 bg-indigo-100 rounded-full border border-indigo-300">
               {skill}
             </span>
           ))}
@@ -53,14 +53,14 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
 
         {/* Divider */}
         <div className="flex-grow"></div>
-        <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-200 dark:via-gray-700 to-transparent mb-4"></div>
+        <div className="h-0.5 bg-gradient-to-r from-transparent via-gray-200 to-transparent mb-4"></div>
 
         {/* Toggle Answer Button */}
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setShowAnswer(!showAnswer)}
-          className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors px-4 py-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20"
+          className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors px-4 py-2 rounded-lg hover:bg-blue-50"
         >
           {showAnswer ? (
             <>
@@ -85,10 +85,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
               transition={{ duration: 0.3 }}
               className="overflow-hidden mt-4"
             >
-              <div className="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl border-2 border-blue-200 dark:border-blue-700/50 relative">
+              <div className="p-5 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border-2 border-blue-200 relative">
                 <button
                   onClick={handleCopy}
-                  className="absolute top-4 right-4 p-2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 transition-colors rounded-lg hover:bg-white dark:hover:bg-gray-700/30"
+                  className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 transition-colors rounded-lg hover:bg-white"
                   title="Copy answer"
                 >
                   {copied ? (
@@ -97,7 +97,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({ question }) => {
                     <Copy size={18} />
                   )}
                 </button>
-                <div className="markdown-body text-gray-800 dark:text-gray-200 text-sm leading-relaxed pr-8">
+                <div className="markdown-body text-gray-800 text-sm leading-relaxed pr-8">
                   <ReactMarkdown>{question.answer}</ReactMarkdown>
                 </div>
               </div>

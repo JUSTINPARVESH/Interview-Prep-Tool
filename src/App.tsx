@@ -4,14 +4,12 @@ import { AnimatePresence, motion } from 'motion/react';
 import InputForm from './components/InputForm';
 import QuestionCard from './components/QuestionCard';
 import Quiz from './components/Quiz';
-import ThemeToggle from './components/ThemeToggle';
 import StreakWidget from './components/StreakWidget';
 import AchievementBadges from './components/AchievementBadges';
 import StatsOverlay from './components/StatsOverlay';
 import { Role, Question, AppMode } from './types';
 import { QUESTIONS } from './constants';
 import { ROLES } from './constants';
-import { useSettingsStore } from './store/settingsStore';
 import { useUserStore } from './store/userStore';
 
 export default function App() {
@@ -20,24 +18,11 @@ export default function App() {
   const [mode, setMode] = useState<AppMode>('study');
   
   // Initialize stores
-  const { isDarkMode } = useSettingsStore();
   const { initializeUser } = useUserStore();
 
   useEffect(() => {
     initializeUser();
-    
-    // Apply dark mode class to document
-    const updateDarkMode = () => {
-      const dark = isDarkMode();
-      if (dark) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    };
-    
-    updateDarkMode();
-  }, [isDarkMode, initializeUser]);
+  }, []);
 
   const handleGenerate = () => {
     if (selectedFilters.length === 0) {
@@ -66,23 +51,18 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-white">
       {/* New UI Components */}
       <StreakWidget />
       <AchievementBadges />
-      
-      {/* Header with Theme Toggle */}
-      <div className="flex justify-end p-4 sm:p-6 fixed top-0 right-0 z-30">
-        <ThemeToggle />
-      </div>
 
       {/* Premium Hero Section */}
-      <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 dark:from-blue-900 dark:via-blue-800 dark:to-indigo-900 relative overflow-hidden">
+      <div className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 dark:bg-blue-700 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500 dark:bg-indigo-700 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-1/2 w-96 h-96 bg-pink-500 dark:bg-indigo-800 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+          <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
         </div>
 
         {/* Hero Content */}
@@ -155,7 +135,7 @@ export default function App() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={startQuiz}
-                    className="flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-600 dark:hover:from-blue-600 dark:hover:to-indigo-700 text-white font-bold py-5 px-12 text-lg rounded-2xl transition-all shadow-2xl hover:shadow-3xl hover:shadow-blue-500/40 dark:hover:shadow-indigo-500/30 group"
+                    className="flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-5 px-12 text-lg rounded-2xl transition-all shadow-2xl hover:shadow-3xl hover:shadow-blue-500/40 group"
                   >
                     <Play size={26} className="fill-current group-hover:scale-110 transition-transform" />
                     Start Exam Quiz
@@ -184,20 +164,20 @@ export default function App() {
               transition={{ delay: 0.5 }}
               className="inline-block mb-6"
             >
-              <div className="p-5 rounded-full bg-gradient-to-br from-blue-200 to-indigo-200 dark:from-blue-900/40 dark:to-indigo-900/40">
-                <Filter size={56} className="text-blue-400 dark:text-blue-500" />
+              <div className="p-5 rounded-full bg-gradient-to-br from-blue-200 to-indigo-200">
+                <Filter size={56} className="text-blue-400" />
               </div>
             </motion.div>
-            <p className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">No questions yet</p>
-            <p className="text-gray-500 dark:text-gray-400 text-lg">Select roles or skills above to start your interview prep journey</p>
+            <p className="text-2xl font-bold text-gray-700 mb-2">No questions yet</p>
+            <p className="text-gray-500 text-lg">Select roles or skills above to start your interview prep journey</p>
           </motion.div>
         )}
       </div>
 
       {/* Footer */}
-      <footer className="mt-32 text-center py-8 border-t border-gray-200 dark:border-gray-800">
-        <p className="text-gray-600 dark:text-gray-400 font-medium mb-2">🚀 Master your interview skills with AI-powered feedback</p>
-        <p className="text-sm text-gray-500 dark:text-gray-500">&copy; {new Date().getFullYear()} AI Interview Prep Tool. Built with ❤️</p>
+      <footer className="mt-32 text-center py-8 border-t border-gray-200">
+        <p className="text-gray-600 font-medium mb-2">🚀 Master your interview skills with AI-powered feedback</p>
+        <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} AI Interview Prep Tool. Built with ❤️</p>
       </footer>
     </div>
   );

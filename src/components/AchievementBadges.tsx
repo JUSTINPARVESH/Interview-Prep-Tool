@@ -20,7 +20,7 @@ export default function AchievementBadges() {
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         onClick={() => setShowFullList(true)}
-        className="fixed top-4 left-4 z-40 bg-white dark:bg-gray-800 shadow-lg rounded-full p-3 hover:shadow-xl transition-shadow border border-yellow-200 dark:border-yellow-700"
+        className="fixed top-4 left-4 z-40 bg-white shadow-lg rounded-full p-3 hover:shadow-xl transition-shadow border border-yellow-200"
         title="View achievements"
       >
         <Award size={24} className="text-yellow-500" />
@@ -46,16 +46,16 @@ export default function AchievementBadges() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl max-w-md w-full p-6"
+              className="bg-white rounded-2xl shadow-xl max-w-md w-full p-6"
             >
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <h2 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
                   <Award size={28} className="text-yellow-500" />
                   Achievements
                 </h2>
                 <button
                   onClick={() => setShowFullList(false)}
-                  className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+                  className="text-gray-400 hover:text-gray-600"
                 >
                   <X size={24} />
                 </button>
@@ -68,14 +68,14 @@ export default function AchievementBadges() {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="flex items-start gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-gray-700 dark:to-gray-600 rounded-lg"
+                    className="flex items-start gap-3 p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg"
                   >
                     <div className="text-3xl">{achievement.icon}</div>
                     <div>
-                      <p className="font-bold text-gray-900 dark:text-white">{achievement.name}</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{achievement.description}</p>
+                      <p className="font-bold text-gray-900">{achievement.name}</p>
+                      <p className="text-sm text-gray-600">{achievement.description}</p>
                       {achievement.unlockedAt && (
-                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                        <p className="text-xs text-gray-500 mt-1">
                           Unlocked {new Date(achievement.unlockedAt).toLocaleDateString()}
                         </p>
                       )}
@@ -84,8 +84,8 @@ export default function AchievementBadges() {
                 ))}
               </div>
 
-              <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="mt-6 pt-4 border-t border-gray-200">
+                <p className="text-sm text-gray-600">
                   {stats.achievements.length} of 10 achievements unlocked
                 </p>
               </div>

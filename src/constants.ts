@@ -5,7 +5,7 @@ export const SKILLS = [
   'Node.js', 'Express.js', 'Python', 'Django', 'Flask',
   'SQL', 'PostgreSQL', 'MongoDB', 'NoSQL',
   'Docker', 'Kubernetes', 'AWS', 'Azure', 'CI/CD', 'Git',
-  'GraphQL', 'REST API', 'Security'
+  'GraphQL', 'REST API', 'Security', 'AI'
 ];
 
 export const ROLES = [
@@ -15,104 +15,1410 @@ export const ROLES = [
 export const ALL_FILTERS = [...ROLES, ...SKILLS];
 
 export const QUESTIONS: Question[] = [
-  // Frontend Fundamentals
+  // Frontend Fundamentals - React Questions (50 questions)
   {
     id: 'f1',
     text: 'What is React?',
-    answer: 'React is a popular **JavaScript library** developed by Facebook for building user interfaces, particularly for single-page applications. It allows developers to create reusable UI components.\n\nKey features include:\n- **Component-Based Architecture**: Build encapsulated components that manage their own state.\n- **Virtual DOM**: React uses a virtual representation of the DOM to optimize rendering performance.\n- **Declarative UI**: You describe how your UI should look for different states, and React updates the DOM efficiently.\n\n**Example:**\n```jsx\nfunction Welcome() {\n  return <h1>Hello, World!</h1>;\n}\n```',
-    options: ['A JavaScript library for building user interfaces', 'A CSS framework', 'A backend programming language', 'A database management system'],
+    answer: 'UI library.',
+    options: ['UI library', 'Database library', 'Styling library', 'Server library'],
     role: 'Frontend Developer',
     skills: ['React', 'JavaScript']
   },
   {
     id: 'f2',
-    text: 'Explain the useState hook.',
-    answer: 'The `useState` hook is a fundamental React Hook that allows you to add **state** to functional components. Before hooks, state was only available in class components.\n\nIt returns an array with two elements:\n1. The **current state value**.\n2. A **function** that lets you update it.\n\n**Example:**\n```jsx\nimport { useState } from "react";\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p>You clicked {count} times</p>\n      <button onClick={() => setCount(count + 1)}>\n        Click me\n      </button>\n    </div>\n  );\n}\n```',
-    options: ['A Hook for side effects', 'A Hook that lets you add React state to function components', 'A way to navigate between pages', 'A method to fetch data'],
+    text: 'What is component?',
+    answer: 'Reusable UI.',
+    options: ['Reusable UI', 'Single use UI', 'No UI', 'Random UI'],
     role: 'Frontend Developer',
     skills: ['React', 'JavaScript']
   },
   {
     id: 'f3',
-    text: 'What is the Virtual DOM?',
-    answer: 'The **Virtual DOM (VDOM)** is a programming concept where an "ideal" or "virtual" representation of a UI is kept in memory and synced with the "real" DOM by a library such as ReactDOM. This process is called **reconciliation**.\n\n**How it works:**\n1. When state changes, a new Virtual DOM tree is created.\n2. React compares (diffs) the new VDOM with the previous one.\n3. React calculates the most efficient way to update the real DOM.\n4. Only the changed parts of the real DOM are updated, which is much faster than re-rendering the entire page.',
-    options: ['A direct reference to the browser DOM', 'An in-memory representation of the real DOM', 'A CSS styling engine', 'A backend server architecture'],
+    text: 'Types of components?',
+    answer: 'Functional, Class.',
+    options: ['Functional, Class', 'Only Functional', 'Only Class', 'No types'],
     role: 'Frontend Developer',
     skills: ['React']
   },
   {
     id: 'f4',
-    text: 'What are the differences between functional and class components?',
-    answer: 'Functional components use Hooks for state, class components use this.state',
-    options: ['Functional components are faster', 'Class components are deprecated', 'Functional components use Hooks for state, class components use this.state', 'There is no difference'],
+    text: 'What is JSX?',
+    answer: 'HTML in JS.',
+    options: ['HTML in JS', 'JS in HTML', 'Only HTML', 'Only JS'],
     role: 'Frontend Developer',
-    skills: ['React']
+    skills: ['React', 'JavaScript']
   },
   {
     id: 'f5',
-    text: 'Explain the concept of lifting state up in React.',
-    answer: 'Moving shared state to the closest common ancestor',
-    options: ['Moving shared state to the closest common ancestor', 'Deleting state from a component', 'Passing state from parent to child only', 'Using Redux for everything'],
+    text: 'What is Virtual DOM?',
+    answer: 'Fast DOM update.',
+    options: ['Fast DOM update', 'Slow DOM update', 'No DOM update', 'Random DOM update'],
     role: 'Frontend Developer',
     skills: ['React']
   },
   {
     id: 'f6',
-    text: 'What is JSX?',
-    answer: 'A syntax extension for JavaScript that looks like HTML',
-    options: ['A new programming language', 'A styling library', 'A syntax extension for JavaScript that looks like HTML', 'A database query language'],
+    text: 'What is state?',
+    answer: 'Component data.',
+    options: ['Component data', 'Global data', 'No data', 'Random data'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f7',
+    text: 'What are props?',
+    answer: 'Data from parent.',
+    options: ['Data from parent', 'Data from child', 'No data', 'Random data'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f8',
+    text: 'Props vs state?',
+    answer: 'Props = read-only, state = mutable.',
+    options: ['Props = read-only, state = mutable', 'Both read-only', 'Both mutable', 'No difference'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f9',
+    text: 'What is useState?',
+    answer: 'State hook.',
+    options: ['State hook', 'Effect hook', 'Context hook', 'Ref hook'],
     role: 'Frontend Developer',
     skills: ['React', 'JavaScript']
   },
+  {
+    id: 'f10',
+    text: 'What is useEffect?',
+    answer: 'Side effects.',
+    options: ['Side effects', 'State management', 'Event handling', 'Routing'],
+    role: 'Frontend Developer',
+    skills: ['React', 'JavaScript']
+  },
+  {
+    id: 'f11',
+    text: 'What is event handling?',
+    answer: 'User interaction.',
+    options: ['User interaction', 'System interaction', 'No interaction', 'Random interaction'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f12',
+    text: 'What is conditional rendering?',
+    answer: 'Render based on condition.',
+    options: ['Render based on condition', 'Render always', 'Never render', 'Random render'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f13',
+    text: 'What is list rendering?',
+    answer: 'Render list using map().',
+    options: ['Render list using map()', 'Render list manually', 'No list rendering', 'Random rendering'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f14',
+    text: 'What is key?',
+    answer: 'Unique ID.',
+    options: ['Unique ID', 'Duplicate ID', 'No ID', 'Random ID'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f15',
+    text: 'What is controlled component?',
+    answer: 'Form with state.',
+    options: ['Form with state', 'Form without state', 'No form', 'Random form'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f16',
+    text: 'What is uncontrolled component?',
+    answer: 'Form with DOM.',
+    options: ['Form with DOM', 'Form with state', 'No form', 'Random form'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f17',
+    text: 'What is React Router?',
+    answer: 'Routing library.',
+    options: ['Routing library', 'State library', 'Style library', 'Database library'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f18',
+    text: 'What is useParams?',
+    answer: 'Get URL params.',
+    options: ['Get URL params', 'Set URL params', 'Delete URL params', 'Random URL params'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f19',
+    text: 'What is useNavigate?',
+    answer: 'Navigate pages.',
+    options: ['Navigate pages', 'Stay on page', 'Delete pages', 'Random pages'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f20',
+    text: 'What is context API?',
+    answer: 'Global state.',
+    options: ['Global state', 'Local state', 'No state', 'Random state'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f21',
+    text: 'What is useContext?',
+    answer: 'Access context.',
+    options: ['Access context', 'Create context', 'Delete context', 'Random context'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f22',
+    text: 'What is prop drilling?',
+    answer: 'Passing props deeply.',
+    options: ['Passing props deeply', 'Passing props shallow', 'No props passing', 'Random props'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f23',
+    text: 'What is Redux?',
+    answer: 'State management.',
+    options: ['State management', 'Style management', 'Database management', 'No management'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f24',
+    text: 'What is hook?',
+    answer: 'Special function.',
+    options: ['Special function', 'Regular function', 'No function', 'Random function'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f25',
+    text: 'Rules of hooks?',
+    answer: 'Top level only.',
+    options: ['Top level only', 'Bottom level only', 'Any level', 'No level'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f26',
+    text: 'What is fragment?',
+    answer: 'No extra div.',
+    options: ['No extra div', 'Extra div', 'No div', 'Random div'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f27',
+    text: 'What is memo?',
+    answer: 'Optimize rendering.',
+    options: ['Optimize rendering', 'Slow rendering', 'No rendering', 'Random rendering'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f28',
+    text: 'What is lazy loading?',
+    answer: 'Load on demand.',
+    options: ['Load on demand', 'Load immediately', 'No loading', 'Random loading'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f29',
+    text: 'What is Suspense?',
+    answer: 'Loading fallback.',
+    options: ['Loading fallback', 'Error fallback', 'No fallback', 'Random fallback'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f30',
+    text: 'What is ref?',
+    answer: 'Access DOM.',
+    options: ['Access DOM', 'Access CSS', 'Access JS', 'No access'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f31',
+    text: 'What is useRef?',
+    answer: 'Hook for ref.',
+    options: ['Hook for ref', 'Hook for state', 'Hook for effect', 'No hook'],
+    role: 'Frontend Developer',
+    skills: ['React', 'JavaScript']
+  },
+  {
+    id: 'f32',
+    text: 'What is forwardRef?',
+    answer: 'Pass ref.',
+    options: ['Pass ref', 'Block ref', 'Delete ref', 'Random ref'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f33',
+    text: 'What is error boundary?',
+    answer: 'Catch errors.',
+    options: ['Catch errors', 'Create errors', 'Ignore errors', 'Random errors'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f34',
+    text: 'What is HOC?',
+    answer: 'Higher order component.',
+    options: ['Higher order component', 'Lower order component', 'No component', 'Random component'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f35',
+    text: 'What is render props?',
+    answer: 'Share logic.',
+    options: ['Share logic', 'Hide logic', 'Delete logic', 'Random logic'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f36',
+    text: 'What is reconciliation?',
+    answer: 'Update DOM.',
+    options: ['Update DOM', 'Delete DOM', 'Create DOM', 'Random DOM'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f37',
+    text: 'What is SSR?',
+    answer: 'Server render.',
+    options: ['Server render', 'Client render', 'No render', 'Random render'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f38',
+    text: 'What is CSR?',
+    answer: 'Client render.',
+    options: ['Client render', 'Server render', 'No render', 'Random render'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f39',
+    text: 'What is hydration?',
+    answer: 'Attach React to HTML.',
+    options: ['Attach React to HTML', 'Detach React from HTML', 'No attachment', 'Random attachment'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f40',
+    text: 'What is build?',
+    answer: 'Production code.',
+    options: ['Production code', 'Development code', 'No code', 'Random code'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f41',
+    text: 'What is strict mode?',
+    answer: 'Detect issues.',
+    options: ['Detect issues', 'Hide issues', 'Create issues', 'Random issues'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f42',
+    text: 'What is testing?',
+    answer: 'Test components.',
+    options: ['Test components', 'Style components', 'Delete components', 'Random components'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f43',
+    text: 'What is useReducer?',
+    answer: 'State alternative.',
+    options: ['State alternative', 'State only option', 'No state', 'Random state'],
+    role: 'Frontend Developer',
+    skills: ['React', 'JavaScript']
+  },
+  {
+    id: 'f44',
+    text: 'What is custom hook?',
+    answer: 'Reusable hook.',
+    options: ['Reusable hook', 'Single use hook', 'No hook', 'Random hook'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f45',
+    text: 'What is batching?',
+    answer: 'Group updates.',
+    options: ['Group updates', 'Single updates', 'No updates', 'Random updates'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f46',
+    text: 'What is portal?',
+    answer: 'Render outside DOM.',
+    options: ['Render outside DOM', 'Render inside DOM', 'No rendering', 'Random rendering'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f47',
+    text: 'What is lifecycle?',
+    answer: 'Mount, update, unmount.',
+    options: ['Mount, update, unmount', 'Only mount', 'Only update', 'Only unmount'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f48',
+    text: 'What is dependency array?',
+    answer: 'Controls useEffect.',
+    options: ['Controls useEffect', 'Controls useState', 'Controls useRef', 'No control'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f49',
+    text: 'What is re-render?',
+    answer: 'UI update.',
+    options: ['UI update', 'UI delete', 'No UI change', 'Random UI change'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
+  {
+    id: 'f50',
+    text: 'Why React?',
+    answer: 'Fast + reusable UI.',
+    options: ['Fast + reusable UI', 'Slow + single use UI', 'No UI', 'Random UI'],
+    role: 'Frontend Developer',
+    skills: ['React']
+  },
 
-  // HTML & CSS Fundamentals
+  // HTML Questions (50 questions)
   {
     id: 'html1',
-    text: 'What is the difference between HTML and HTML5?',
-    answer: 'HTML5 is the latest version with new semantic elements and APIs',
-    options: ['HTML5 is the latest version with new semantic elements and APIs', 'They are identical', 'HTML5 is only for mobile', 'HTML5 is deprecated'],
+    text: 'What is HTML?',
+    answer: 'HTML is used to structure web pages.',
+    options: ['HTML is used to structure web pages', 'HTML is used to style web pages', 'HTML is used for database operations', 'HTML is a programming language'],
     role: 'Frontend Developer',
     skills: ['HTML']
   },
   {
+    id: 'html2',
+    text: 'What is a tag?',
+    answer: 'Defines an element. Example: <p>Text</p>.',
+    options: ['Defines an element', 'Styles content', 'Creates database', 'Adds JavaScript'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html3',
+    text: 'What is an element?',
+    answer: 'Tag + content.',
+    options: ['Tag + content', 'Only tag', 'Only content', 'Style + tag'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html4',
+    text: 'What is attribute?',
+    answer: 'Extra info inside tag.',
+    options: ['Extra info inside tag', 'Content of tag', 'Style of tag', 'JavaScript function'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html5',
+    text: 'What is DOCTYPE?',
+    answer: 'Defines HTML version.',
+    options: ['Defines HTML version', 'Defines CSS version', 'Defines JavaScript version', 'Defines browser version'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html6',
+    text: 'What is nesting?',
+    answer: 'Elements inside elements.',
+    options: ['Elements inside elements', 'Elements side by side', 'Elements with same tag', 'Elements with same content'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html7',
+    text: 'What is block element?',
+    answer: 'Full width element.',
+    options: ['Full width element', 'Content width element', 'Hidden element', 'Fixed width element'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html8',
+    text: 'What is inline element?',
+    answer: 'Takes required width.',
+    options: ['Takes required width', 'Takes full width', 'Takes fixed width', 'Takes no width'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html9',
+    text: 'What is semantic HTML?',
+    answer: 'Meaningful tags.',
+    options: ['Meaningful tags', 'Styling tags', 'Script tags', 'Random tags'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html10',
+    text: 'Why semantic HTML?',
+    answer: 'SEO + accessibility.',
+    options: ['SEO + accessibility', 'Only for styling', 'Only for JavaScript', 'No special purpose'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html11',
+    text: 'What is header tag?',
+    answer: 'Top section.',
+    options: ['Top section', 'Bottom section', 'Middle section', 'Side section'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html12',
+    text: 'What is footer tag?',
+    answer: 'Bottom section.',
+    options: ['Bottom section', 'Top section', 'Middle section', 'Side section'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html13',
+    text: 'What is section?',
+    answer: 'Group content.',
+    options: ['Group content', 'Single content', 'Style content', 'Delete content'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html14',
+    text: 'What is article?',
+    answer: 'Independent content.',
+    options: ['Independent content', 'Dependent content', 'Related content', 'Random content'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html15',
+    text: 'What is nav?',
+    answer: 'Navigation links.',
+    options: ['Navigation links', 'Style links', 'Script links', 'Database links'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html16',
+    text: 'What is main?',
+    answer: 'Main content.',
+    options: ['Main content', 'Side content', 'Header content', 'Footer content'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html17',
+    text: 'What is aside?',
+    answer: 'Sidebar content.',
+    options: ['Sidebar content', 'Main content', 'Header content', 'Footer content'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html18',
+    text: 'What is strong tag?',
+    answer: 'Important text.',
+    options: ['Important text', 'Normal text', 'Hidden text', 'Styled text'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html19',
+    text: 'What is em tag?',
+    answer: 'Emphasized text.',
+    options: ['Emphasized text', 'Normal text', 'Bold text', 'Italic text'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html20',
+    text: 'What is form?',
+    answer: 'Collect input.',
+    options: ['Collect input', 'Display output', 'Style content', 'Run JavaScript'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html21',
+    text: 'What are input types?',
+    answer: 'text, email, password.',
+    options: ['text, email, password', 'Only text', 'Only email', 'Only password'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html22',
+    text: 'What is label?',
+    answer: 'Input description.',
+    options: ['Input description', 'Input value', 'Input style', 'Input validation'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html23',
+    text: 'What is required?',
+    answer: 'Mandatory field.',
+    options: ['Mandatory field', 'Optional field', 'Hidden field', 'Disabled field'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html24',
+    text: 'What is placeholder?',
+    answer: 'Hint text.',
+    options: ['Hint text', 'Required text', 'Error text', 'Success text'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html25',
+    text: 'GET vs POST?',
+    answer: 'GET = URL, POST = secure.',
+    options: ['GET = URL, POST = secure', 'GET = secure, POST = URL', 'Both are same', 'Both are insecure'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html26',
+    text: 'What is select?',
+    answer: 'Dropdown.',
+    options: ['Dropdown', 'Text input', 'Checkbox', 'Radio button'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html27',
+    text: 'What is textarea?',
+    answer: 'Multi-line input.',
+    options: ['Multi-line input', 'Single line input', 'Password input', 'Email input'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html28',
+    text: 'What is button?',
+    answer: 'Clickable element.',
+    options: ['Clickable element', 'Display element', 'Style element', 'Script element'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html29',
+    text: 'What is img?',
+    answer: 'Image display.',
+    options: ['Image display', 'Video display', 'Audio display', 'Text display'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html30',
+    text: 'What is alt?',
+    answer: 'Image description.',
+    options: ['Image description', 'Image source', 'Image style', 'Image size'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html31',
+    text: 'What is audio?',
+    answer: 'Play sound.',
+    options: ['Play sound', 'Play video', 'Display image', 'Show text'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html32',
+    text: 'What is video?',
+    answer: 'Play video.',
+    options: ['Play video', 'Play audio', 'Display image', 'Show text'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html33',
+    text: 'What is anchor?',
+    answer: 'Create links.',
+    options: ['Create links', 'Create styles', 'Create scripts', 'Create forms'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html34',
+    text: 'What is target?',
+    answer: 'Open in new tab.',
+    options: ['Open in new tab', 'Open in same tab', 'Close tab', 'Block tab'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html35',
+    text: 'What is iframe?',
+    answer: 'Embed page.',
+    options: ['Embed page', 'Create link', 'Add style', 'Run script'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html36',
+    text: 'What is download?',
+    answer: 'Download file.',
+    options: ['Download file', 'Upload file', 'Delete file', 'Edit file'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html37',
+    text: 'What is favicon?',
+    answer: 'Tab icon.',
+    options: ['Tab icon', 'Page title', 'Page content', 'Page style'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html38',
+    text: 'What is relative path?',
+    answer: 'Local file.',
+    options: ['Local file', 'Full URL', 'Database path', 'Script path'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html39',
+    text: 'What is absolute path?',
+    answer: 'Full URL.',
+    options: ['Full URL', 'Local file', 'Relative path', 'Database path'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html40',
+    text: 'What is DOM?',
+    answer: 'HTML tree.',
+    options: ['HTML tree', 'CSS tree', 'JavaScript tree', 'Database tree'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html41',
+    text: 'What is id?',
+    answer: 'Unique identifier.',
+    options: ['Unique identifier', 'Multiple identifier', 'Style identifier', 'Script identifier'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html42',
+    text: 'What is class?',
+    answer: 'Reusable identifier.',
+    options: ['Reusable identifier', 'Unique identifier', 'Style identifier', 'Script identifier'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html43',
+    text: 'What is data-*?',
+    answer: 'Custom attribute.',
+    options: ['Custom attribute', 'Standard attribute', 'Style attribute', 'Script attribute'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html44',
+    text: 'What is hidden?',
+    answer: 'Hide element.',
+    options: ['Hide element', 'Show element', 'Style element', 'Delete element'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html45',
+    text: 'What is contenteditable?',
+    answer: 'Editable content.',
+    options: ['Editable content', 'Read-only content', 'Hidden content', 'Deleted content'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html46',
+    text: 'What is meta tag?',
+    answer: 'Page info.',
+    options: ['Page info', 'Page style', 'Page script', 'Page content'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html47',
+    text: 'What is viewport?',
+    answer: 'Responsive setting.',
+    options: ['Responsive setting', 'Fixed setting', 'Mobile setting', 'Desktop setting'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html48',
+    text: 'What is script?',
+    answer: 'Add JS.',
+    options: ['Add JS', 'Add CSS', 'Add HTML', 'Add database'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html49',
+    text: 'What is link?',
+    answer: 'Add CSS.',
+    options: ['Add CSS', 'Add JS', 'Add HTML', 'Add database'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+  {
+    id: 'html50',
+    text: 'What is accessibility?',
+    answer: 'Usable for all users.',
+    options: ['Usable for all users', 'Only for developers', 'Only for designers', 'Only for mobile users'],
+    role: 'Frontend Developer',
+    skills: ['HTML']
+  },
+
+  // CSS Questions (50 questions)
+  {
     id: 'css1',
     text: 'What is CSS?',
-    answer: 'Cascading Style Sheets - used for styling web pages',
-    options: ['Cascading Style Sheets - used for styling web pages', 'Programming language', 'Database system', 'Server technology'],
+    answer: 'Styles HTML elements.',
+    options: ['Styles HTML elements', 'Structures HTML elements', 'Adds JavaScript to HTML', 'Creates HTML elements'],
     role: 'Frontend Developer',
     skills: ['CSS']
   },
   {
     id: 'css2',
-    text: 'What is the CSS Box Model?',
-    answer: 'Content, padding, border, margin',
-    options: ['Content, padding, border, margin', 'Width, height, color', 'Display, position, float', 'Flex, grid, block'],
+    text: 'Types of CSS?',
+    answer: 'Inline, Internal, External.',
+    options: ['Inline, Internal, External', 'Only Inline', 'Only Internal', 'Only External'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css3',
+    text: 'What is selector?',
+    answer: 'Targets elements.',
+    options: ['Targets elements', 'Creates elements', 'Deletes elements', 'Styles elements automatically'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css4',
+    text: 'What is class selector?',
+    answer: '.myClass {}',
+    options: ['.myClass {}', '#myId {}', 'myClass {}', '*myClass {}'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css5',
+    text: 'What is id selector?',
+    answer: '#id {}',
+    options: ['#id {}', '.id {}', 'id {}', '*id {}'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css6',
+    text: 'What is universal selector?',
+    answer: '* {}',
+    options: ['* {}', '# {}', '. {}', 'all {}'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css7',
+    text: 'What is box model?',
+    answer: 'Content + padding + border + margin.',
+    options: ['Content + padding + border + margin', 'Content + border + margin', 'Padding + border + margin', 'Content + padding + margin'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css8',
+    text: 'Margin vs padding?',
+    answer: 'Outside vs inside.',
+    options: ['Outside vs inside', 'Inside vs outside', 'Both are same', 'Both are outside'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css9',
+    text: 'What is border?',
+    answer: 'Element boundary.',
+    options: ['Element boundary', 'Element background', 'Element margin', 'Element padding'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css10',
+    text: 'What is width/height?',
+    answer: 'Size control.',
+    options: ['Size control', 'Color control', 'Position control', 'Display control'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css11',
+    text: 'What is display?',
+    answer: 'block, inline, flex.',
+    options: ['block, inline, flex', 'Only block', 'Only inline', 'Only flex'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css12',
+    text: 'display:block?',
+    answer: 'Full width.',
+    options: ['Full width', 'Content width', 'No width', 'Fixed width'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css13',
+    text: 'display:inline?',
+    answer: 'Content width.',
+    options: ['Content width', 'Full width', 'No width', 'Fixed width'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css14',
+    text: 'display:none?',
+    answer: 'Hide element.',
+    options: ['Hide element', 'Show element', 'Style element', 'Delete element'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css15',
+    text: 'What is position?',
+    answer: 'Element placement.',
+    options: ['Element placement', 'Element styling', 'Element sizing', 'Element hiding'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css16',
+    text: 'Types of position?',
+    answer: 'static, relative, absolute, fixed, sticky.',
+    options: ['static, relative, absolute, fixed, sticky', 'Only static and relative', 'Only absolute and fixed', 'Only fixed and sticky'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css17',
+    text: 'What is relative?',
+    answer: 'Position from itself.',
+    options: ['Position from itself', 'Position from parent', 'Position from viewport', 'Position from body'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css18',
+    text: 'What is absolute?',
+    answer: 'Relative to parent.',
+    options: ['Relative to parent', 'Relative to itself', 'Relative to viewport', 'Relative to body'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css19',
+    text: 'What is fixed?',
+    answer: 'Fixed on screen.',
+    options: ['Fixed on screen', 'Fixed to parent', 'Fixed to body', 'Fixed to element'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css20',
+    text: 'What is sticky?',
+    answer: 'Scroll-based.',
+    options: ['Scroll-based', 'Click-based', 'Hover-based', 'Fixed-based'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css21',
+    text: 'What is z-index?',
+    answer: 'Layer order.',
+    options: ['Layer order', 'Layer size', 'Layer color', 'Layer position'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css22',
+    text: 'What is Flexbox?',
+    answer: '1D layout.',
+    options: ['1D layout', '2D layout', '3D layout', 'Random layout'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css23',
+    text: 'justify-content?',
+    answer: 'Horizontal align.',
+    options: ['Horizontal align', 'Vertical align', 'Diagonal align', 'Random align'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css24',
+    text: 'align-items?',
+    answer: 'Vertical align.',
+    options: ['Vertical align', 'Horizontal align', 'Diagonal align', 'Random align'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css25',
+    text: 'flex-direction?',
+    answer: 'Row/column.',
+    options: ['Row/column', 'Only row', 'Only column', 'Diagonal'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css26',
+    text: 'What is Grid?',
+    answer: '2D layout.',
+    options: ['2D layout', '1D layout', '3D layout', 'Random layout'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css27',
+    text: 'grid-template-columns?',
+    answer: 'Define columns.',
+    options: ['Define columns', 'Define rows', 'Define gaps', 'Define areas'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css28',
+    text: 'gap?',
+    answer: 'Space between items.',
+    options: ['Space between items', 'Space inside items', 'Space outside items', 'No space'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css29',
+    text: 'What is responsive design?',
+    answer: 'Adapt to devices.',
+    options: ['Adapt to devices', 'Fixed design', 'Mobile only', 'Desktop only'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css30',
+    text: 'What is media query?',
+    answer: 'Device-based CSS.',
+    options: ['Device-based CSS', 'Browser-based CSS', 'Server-based CSS', 'Random CSS'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css31',
+    text: 'What is overflow?',
+    answer: 'Handle overflow.',
+    options: ['Handle overflow', 'Handle underflow', 'Handle flow', 'No handling'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css32',
+    text: 'overflow:hidden?',
+    answer: 'Hide extra.',
+    options: ['Hide extra', 'Show extra', 'Scroll extra', 'Resize extra'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css33',
+    text: 'What is opacity?',
+    answer: 'Transparency.',
+    options: ['Transparency', 'Color', 'Size', 'Position'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css34',
+    text: 'What is visibility?',
+    answer: 'Show/hide.',
+    options: ['Show/hide', 'Only show', 'Only hide', 'No effect'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css35',
+    text: 'What is float?',
+    answer: 'Left/right position.',
+    options: ['Left/right position', 'Top/bottom position', 'Center position', 'Random position'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css36',
+    text: 'What is clear?',
+    answer: 'Clear float.',
+    options: ['Clear float', 'Set float', 'Ignore float', 'Create float'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css37',
+    text: 'What is pseudo-class?',
+    answer: ':hover',
+    options: [':hover', '::before', '.class', '#id'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css38',
+    text: 'What is pseudo-element?',
+    answer: '::before',
+    options: ['::before', ':hover', '.class', '#id'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css39',
+    text: 'What is specificity?',
+    answer: 'Priority.',
+    options: ['Priority', 'Style', 'Color', 'Size'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css40',
+    text: 'What is !important?',
+    answer: 'Override.',
+    options: ['Override', 'Underwrite', 'Ignore', 'Delete'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css41',
+    text: 'What is px?',
+    answer: 'Fixed unit.',
+    options: ['Fixed unit', 'Relative unit', 'Flexible unit', 'Random unit'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css42',
+    text: 'What is rem?',
+    answer: 'Relative unit.',
+    options: ['Relative unit', 'Fixed unit', 'Flexible unit', 'Random unit'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css43',
+    text: 'What is vh/vw?',
+    answer: 'Viewport units.',
+    options: ['Viewport units', 'Fixed units', 'Relative units', 'Random units'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css44',
+    text: 'What is transition?',
+    answer: 'Smooth change.',
+    options: ['Smooth change', 'Instant change', 'No change', 'Random change'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css45',
+    text: 'What is animation?',
+    answer: 'Movement.',
+    options: ['Movement', 'Static', 'Hidden', 'Fixed'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css46',
+    text: 'What is keyframes?',
+    answer: 'Animation steps.',
+    options: ['Animation steps', 'Animation speed', 'Animation color', 'Animation size'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css47',
+    text: 'What is shadow?',
+    answer: 'Box/text shadow.',
+    options: ['Box/text shadow', 'Box/text color', 'Box/text size', 'Box/text position'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css48',
+    text: 'What is gradient?',
+    answer: 'Color blend.',
+    options: ['Color blend', 'Color fix', 'Color change', 'Color remove'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css49',
+    text: 'What is transform?',
+    answer: 'Rotate/scale.',
+    options: ['Rotate/scale', 'Color/size', 'Position/display', 'Hide/show'],
+    role: 'Frontend Developer',
+    skills: ['CSS']
+  },
+  {
+    id: 'css50',
+    text: 'What is filter?',
+    answer: 'Visual effects.',
+    options: ['Visual effects', 'Audio effects', 'Text effects', 'Layout effects'],
     role: 'Frontend Developer',
     skills: ['CSS']
   },
 
-  // JavaScript Fundamentals
+  // JavaScript Questions (25 questions)
   {
     id: 'js1',
-    text: 'What is the difference between == and === in JavaScript?',
-    answer: '== does type coercion, === does strict equality check',
-    options: ['== does type coercion, === does strict equality check', 'They are identical', '=== does type coercion, == does strict equality', 'Both do type coercion'],
+    text: 'What is JavaScript?',
+    answer: 'Programming language for web.',
+    options: ['Programming language for web', 'Styling language', 'Database language', 'Server language only'],
     role: 'Frontend Developer',
     skills: ['JavaScript']
   },
   {
     id: 'js2',
-    text: 'What is a closure in JavaScript?',
-    answer: 'Function with access to outer function scope',
-    options: ['Function with access to outer function scope', 'Function without access to outer scope', 'Object-oriented concept', 'Array method'],
+    text: 'What are variables?',
+    answer: 'Store data. let x = 10;',
+    options: ['Store data. let x = 10;', 'Only store strings', 'Only store numbers', 'No storage'],
     role: 'Frontend Developer',
     skills: ['JavaScript']
   },
   {
     id: 'js3',
-    text: 'What is hoisting in JavaScript?',
-    answer: 'Moving declarations to top of scope',
-    options: ['Moving declarations to top of scope', 'Moving code to bottom', 'Code optimization', 'Error handling'],
+    text: 'var vs let vs const?',
+    answer: 'Scope + mutability.',
+    options: ['Scope + mutability', 'All same', 'Only scope difference', 'Only mutability difference'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js4',
+    text: 'What is data type?',
+    answer: 'Type of data (string, number).',
+    options: ['Type of data (string, number)', 'Only string', 'Only number', 'No types'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js5',
+    text: 'What is typeof?',
+    answer: 'Returns type.',
+    options: ['Returns type', 'Returns value', 'Returns size', 'Returns nothing'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js6',
+    text: 'What is hoisting?',
+    answer: 'Variables moved to top.',
+    options: ['Variables moved to top', 'Variables moved to bottom', 'No movement', 'Random movement'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js7',
+    text: 'What is scope?',
+    answer: 'Variable accessibility.',
+    options: ['Variable accessibility', 'Variable storage', 'Variable deletion', 'Variable creation'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js8',
+    text: 'What is function?',
+    answer: 'Reusable code block.',
+    options: ['Reusable code block', 'Single use code', 'No code', 'Random code'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js9',
+    text: 'What is arrow function?',
+    answer: 'Short syntax.',
+    options: ['Short syntax', 'Long syntax', 'No syntax', 'Random syntax'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js10',
+    text: 'What is callback?',
+    answer: 'Function inside function.',
+    options: ['Function inside function', 'Function outside function', 'No function', 'Multiple functions'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js11',
+    text: 'What is closure?',
+    answer: 'Access outer scope.',
+    options: ['Access outer scope', 'Access inner scope', 'No access', 'Random access'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js12',
+    text: 'What is array?',
+    answer: 'Collection of values.',
+    options: ['Collection of values', 'Single value', 'No values', 'Random values'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js13',
+    text: 'What is object?',
+    answer: 'Key-value pair.',
+    options: ['Key-value pair', 'Value-key pair', 'Only keys', 'Only values'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js14',
+    text: 'What is JSON?',
+    answer: 'Data format.',
+    options: ['Data format', 'Code format', 'Style format', 'No format'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js15',
+    text: 'What is map()?',
+    answer: 'Transform array.',
+    options: ['Transform array', 'Filter array', 'Delete array', 'Create array'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js16',
+    text: 'What is filter()?',
+    answer: 'Filter values.',
+    options: ['Filter values', 'Transform values', 'Delete values', 'Create values'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js17',
+    text: 'What is reduce()?',
+    answer: 'Reduce to single value.',
+    options: ['Reduce to single value', 'Expand to multiple values', 'No reduction', 'Random values'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js18',
+    text: 'What is event?',
+    answer: 'User action.',
+    options: ['User action', 'System action', 'No action', 'Random action'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js19',
+    text: 'What is DOM?',
+    answer: 'HTML structure.',
+    options: ['HTML structure', 'CSS structure', 'JavaScript structure', 'Database structure'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js20',
+    text: 'What is this?',
+    answer: 'Current object.',
+    options: ['Current object', 'Parent object', 'Child object', 'No object'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js21',
+    text: '== vs ===?',
+    answer: 'Loose vs strict.',
+    options: ['Loose vs strict', 'Both loose', 'Both strict', 'No difference'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js22',
+    text: 'What is NaN?',
+    answer: 'Not a number.',
+    options: ['Not a number', 'Is a number', 'Is a string', 'Is undefined'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js23',
+    text: 'What is setTimeout?',
+    answer: 'Delay function.',
+    options: ['Delay function', 'Immediate function', 'No function', 'Random function'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js24',
+    text: 'What is promise?',
+    answer: 'Async handler.',
+    options: ['Async handler', 'Sync handler', 'No handler', 'Random handler'],
+    role: 'Frontend Developer',
+    skills: ['JavaScript']
+  },
+  {
+    id: 'js25',
+    text: 'What is async/await?',
+    answer: 'Simplify async.',
+    options: ['Simplify async', 'Complicate async', 'No async', 'Random async'],
     role: 'Frontend Developer',
     skills: ['JavaScript']
   },
@@ -414,54 +1720,206 @@ export const QUESTIONS: Question[] = [
     role: 'Frontend Developer',
     skills: ['Vue']
   },
-  // TypeScript Questions
+  // TypeScript Questions (25 questions)
   {
     id: 'ts1',
     text: 'What is TypeScript?',
-    answer: 'Typed superset of JavaScript.',
-    options: ['Typed superset of JavaScript', 'JavaScript subset', 'New programming language', 'Database language'],
+    answer: 'Typed JavaScript.',
+    options: ['Typed JavaScript', 'Dynamic JavaScript', 'New programming language', 'Database language'],
     role: 'Frontend Developer',
     skills: ['TypeScript', 'JavaScript']
   },
   {
     id: 'ts2',
-    text: 'What is interface in TypeScript?',
-    answer: 'Define object shape.',
-    options: ['Define object shape', 'Define class shape', 'Define function shape', 'Define array shape'],
+    text: 'Why TypeScript?',
+    answer: 'Catch errors early.',
+    options: ['Catch errors early', 'Only for styling', 'Only for database', 'No special purpose'],
     role: 'Frontend Developer',
     skills: ['TypeScript']
   },
   {
     id: 'ts3',
-    text: 'What is generic in TypeScript?',
-    answer: 'Reusable type.',
-    options: ['Reusable type', 'Single type', 'No type', 'Random type'],
+    text: 'What is static typing?',
+    answer: 'Define types.',
+    options: ['Define types', 'Dynamic types', 'No types', 'Random types'],
     role: 'Frontend Developer',
     skills: ['TypeScript']
   },
   {
     id: 'ts4',
-    text: 'What is type annotation?',
-    answer: 'Specify variable type.',
-    options: ['Specify variable type', 'Ignore variable type', 'Create variable type', 'Delete variable type'],
+    text: 'Example type?',
+    answer: 'let x: number = 10;',
+    options: ['let x: number = 10;', 'let x = 10;', 'number x = 10;', 'x: number = 10;'],
     role: 'Frontend Developer',
-    skills: ['Vue']
+    skills: ['TypeScript']
   },
   {
-    id: 'vue42',
-    text: 'What is server-side rendering?',
-    answer: 'Render on server.',
-    options: ['Render on server', 'Render on client', 'No rendering', 'Random rendering'],
+    id: 'ts5',
+    text: 'Basic types?',
+    answer: 'string, number, boolean.',
+    options: ['string, number, boolean', 'Only string', 'Only number', 'Only boolean'],
     role: 'Frontend Developer',
-    skills: ['Vue']
+    skills: ['TypeScript']
   },
   {
-    id: 'vue43',
-    text: 'What is Nuxt.js?',
-    answer: 'Vue framework for SSR.',
-    options: ['Vue framework for SSR', 'Vue framework for CSS', 'Vue framework for data', 'Vue framework for scripts'],
+    id: 'ts6',
+    text: 'What is any?',
+    answer: 'Any type allowed.',
+    options: ['Any type allowed', 'No type allowed', 'Only specific types', 'Only string types'],
     role: 'Frontend Developer',
-    skills: ['Vue']
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts7',
+    text: 'What is unknown?',
+    answer: 'Safer any.',
+    options: ['Safer any', 'Same as any', 'Unsafe any', 'No type'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts8',
+    text: 'What is void?',
+    answer: 'No return.',
+    options: ['No return', 'Must return', 'Optional return', 'Random return'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts9',
+    text: 'What is never?',
+    answer: 'Never returns.',
+    options: ['Never returns', 'Always returns', 'Sometimes returns', 'Optional return'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts10',
+    text: 'What is array type?',
+    answer: 'number[]',
+    options: ['number[]', 'array', 'list', 'collection'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts11',
+    text: 'What is tuple?',
+    answer: 'Fixed array.',
+    options: ['Fixed array', 'Dynamic array', 'Single array', 'Empty array'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts12',
+    text: 'What is enum?',
+    answer: 'Named constants.',
+    options: ['Named constants', 'Dynamic variables', 'Random values', 'Functions'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts13',
+    text: 'What is interface?',
+    answer: 'Define structure.',
+    options: ['Define structure', 'Define function', 'Define variable', 'Define class'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts14',
+    text: 'What is type?',
+    answer: 'Custom type.',
+    options: ['Custom type', 'Standard type', 'Built-in type', 'Random type'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts15',
+    text: 'Interface vs type?',
+    answer: 'Extend vs flexible.',
+    options: ['Extend vs flexible', 'Same thing', 'Only extend', 'Only flexible'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts16',
+    text: 'What is optional property?',
+    answer: 'name?: string',
+    options: ['name?: string', 'name: string', 'name!: string', 'name = string'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts17',
+    text: 'What is readonly?',
+    answer: 'Immutable.',
+    options: ['Immutable', 'Mutable', 'Optional', 'Required'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts18',
+    text: 'What is function typing?',
+    answer: '(a:number)=>number',
+    options: ['(a:number)=>number', 'function number', 'a:number number', 'number=>number'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts19',
+    text: 'What is union type?',
+    answer: 'string | number',
+    options: ['string | number', 'string + number', 'string & number', 'string, number'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts20',
+    text: 'What is generics?',
+    answer: 'Reusable types.',
+    options: ['Reusable types', 'Single types', 'Fixed types', 'No types'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts21',
+    text: 'What is type assertion?',
+    answer: 'as keyword.',
+    options: ['as keyword', 'is keyword', 'type keyword', 'new keyword'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts22',
+    text: 'What is module?',
+    answer: 'File-based code.',
+    options: ['File-based code', 'Single file code', 'No file code', 'Database code'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts23',
+    text: 'What is export/import?',
+    answer: 'Share code.',
+    options: ['Share code', 'Hide code', 'Delete code', 'Create code'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts24',
+    text: 'What is tsconfig?',
+    answer: 'Config file.',
+    options: ['Config file', 'Code file', 'Style file', 'Data file'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript']
+  },
+  {
+    id: 'ts25',
+    text: 'TS vs JS?',
+    answer: 'Typed vs dynamic.',
+    options: ['Typed vs dynamic', 'Both typed', 'Both dynamic', 'No difference'],
+    role: 'Frontend Developer',
+    skills: ['TypeScript', 'JavaScript']
   },
   {
     id: 'vue44',
@@ -3334,6 +4792,168 @@ export const QUESTIONS: Question[] = [
     skills: ['NoSQL']
   },
 
+  // Docker Questions
+  {
+    id: 'docker1',
+    text: 'What is Docker?',
+    answer: 'Docker is a platform for developing and running applications in containers.',
+    options: ['A platform for developing and running applications in containers', 'A virtualization platform', 'A cloud service', 'A database system'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker2',
+    text: 'What is a Docker container?',
+    answer: 'A lightweight, standalone executable package.',
+    options: ['A lightweight, standalone executable package', 'A virtual machine', 'A physical server', 'A database instance'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker3',
+    text: 'What is a Docker image?',
+    answer: 'A read-only template for creating containers.',
+    options: ['A read-only template for creating containers', 'A running container', 'A configuration file', 'A database backup'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker4',
+    text: 'What is Dockerfile?',
+    answer: 'Text file with instructions to build image.',
+    options: ['Text file with instructions to build image', 'Running container configuration', 'Database schema', 'Application code'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker5',
+    text: 'What is docker-compose?',
+    answer: 'Tool for defining and running multi-container applications.',
+    options: ['Tool for defining and running multi-container applications', 'Single container tool', 'Database tool', 'Cloud deployment tool'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker6',
+    text: 'What is Docker Hub?',
+    answer: 'Cloud-based registry for Docker images.',
+    options: ['Cloud-based registry for Docker images', 'Local image storage', 'Database service', 'Code repository'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker7',
+    text: 'What is container orchestration?',
+    answer: 'Automating deployment of containers.',
+    options: ['Automating deployment of containers', 'Manual container management', 'No container management', 'Random container operations'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker8',
+    text: 'What is Kubernetes?',
+    answer: 'Container orchestration platform.',
+    options: ['Container orchestration platform', 'Container runtime', 'Image registry', 'Database system'],
+    role: 'DevOps',
+    skills: ['Docker', 'Kubernetes']
+  },
+  {
+    id: 'docker9',
+    text: 'What is Docker Swarm?',
+    answer: 'Native clustering solution for Docker.',
+    options: ['Native clustering solution for Docker', 'External orchestration tool', 'Database clustering', 'Load balancer'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker10',
+    text: 'What is docker volume?',
+    answer: 'Persistent data storage for containers.',
+    options: ['Persistent data storage for containers', 'Temporary storage', 'Memory storage', 'Network storage'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker11',
+    text: 'What is docker network?',
+    answer: 'Communication between containers.',
+    options: ['Communication between containers', 'Container isolation', 'No networking', 'Random networking'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker12',
+    text: 'What is docker registry?',
+    answer: 'Storage and distribution of images.',
+    options: ['Storage and distribution of images', 'Image creation only', 'Container management only', 'No registry functionality'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker13',
+    text: 'What is multi-stage build?',
+    answer: 'Optimize image size.',
+    options: ['Optimize image size', 'Increase image size', 'No optimization', 'Random optimization'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker14',
+    text: 'What is .dockerignore?',
+    answer: 'Exclude files from build context.',
+    options: ['Exclude files from build context', 'Include all files', 'No file exclusion', 'Random file handling'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker15',
+    text: 'What is health check?',
+    answer: 'Monitor container health.',
+    options: ['Monitor container health', 'Ignore container health', 'No health monitoring', 'Random monitoring'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker16',
+    text: 'What is docker secret?',
+    answer: 'Manage sensitive data.',
+    options: ['Manage sensitive data', 'Manage public data', 'No data management', 'Random data management'],
+    role: 'DevOps',
+    skills: ['Docker', 'Security']
+  },
+  {
+    id: 'docker17',
+    text: 'What is docker config?',
+    answer: 'Manage configuration data.',
+    options: ['Manage configuration data', 'Manage runtime data', 'No configuration management', 'Random configuration'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker18',
+    text: 'What is container runtime?',
+    answer: 'Execute containers.',
+    options: ['Execute containers', 'Build containers', 'No container execution', 'Random container operations'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker19',
+    text: 'What is containerd?',
+    answer: 'Industry-standard container runtime.',
+    options: ['Industry-standard container runtime', 'Docker-specific runtime', 'No runtime', 'Random runtime'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+  {
+    id: 'docker20',
+    text: 'Why Docker?',
+    answer: 'Consistent environments, portability, efficiency.',
+    options: ['Consistent environments, portability, efficiency', 'Inconsistent environments, no portability, inefficient', 'Random benefits', 'No benefits'],
+    role: 'DevOps',
+    skills: ['Docker']
+  },
+
   // AWS Questions
   {
     id: 'aws1',
@@ -3374,5 +4994,251 @@ export const QUESTIONS: Question[] = [
     options: ['Serverless compute service', 'Server-based compute service', 'No compute service', 'Random compute service'],
     role: 'DevOps',
     skills: ['AWS']
+  },
+
+  // AI Questions - Beginner Level
+  {
+    id: 'ai_beginner_1',
+    text: 'What is Artificial Intelligence?',
+    answer: 'The simulation of human intelligence in machines.',
+    options: ['The simulation of human intelligence in machines', 'Only machine learning algorithms', 'Just robotics', 'No intelligence in machines'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_beginner_2',
+    text: 'What is Machine Learning?',
+    answer: 'Systems that learn from data without explicit programming.',
+    options: ['Systems that learn from data without explicit programming', 'Systems that only follow rules', 'Systems that cannot learn', 'No learning capability'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_beginner_3',
+    text: 'What is Deep Learning?',
+    answer: 'Machine learning with neural networks.',
+    options: ['Machine learning with neural networks', 'Simple machine learning', 'No learning involved', 'Random learning'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_beginner_4',
+    text: 'What is a Neural Network?',
+    answer: 'Computing systems inspired by biological neural networks.',
+    options: ['Computing systems inspired by biological neural networks', 'Simple algorithms', 'No network concept', 'Random networks'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_beginner_5',
+    text: 'What is Training Data?',
+    answer: 'Data used to train AI models.',
+    options: ['Data used to train AI models', 'Data used for testing only', 'No data needed', 'Random data'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_beginner_6',
+    text: 'What is Supervised Learning?',
+    answer: 'Learning with labeled training data.',
+    options: ['Learning with labeled training data', 'Learning without labels', 'No learning process', 'Random learning'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_beginner_7',
+    text: 'What is Unsupervised Learning?',
+    answer: 'Learning without labeled training data.',
+    options: ['Learning without labeled training data', 'Learning with labels only', 'No learning possible', 'Random learning'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_beginner_8',
+    text: 'What is a Model in AI?',
+    answer: 'A mathematical representation of a system.',
+    options: ['A mathematical representation of a system', 'Physical representation only', 'No model concept', 'Random model'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_beginner_9',
+    text: 'What is Feature Engineering?',
+    answer: 'Process of selecting and transforming variables.',
+    options: ['Process of selecting and transforming variables', 'No feature processing', 'Random features', 'Delete all features'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_beginner_10',
+    text: 'What is Overfitting?',
+    answer: 'Model performs well on training data but poorly on new data.',
+    options: ['Model performs well on training data but poorly on new data', 'Model performs poorly on all data', 'Perfect performance always', 'Random performance'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+
+  // AI Questions - Intermediate Level
+  {
+    id: 'ai_intermediate_1',
+    text: 'What is Backpropagation?',
+    answer: 'Algorithm for training neural networks by calculating gradients.',
+    options: ['Algorithm for training neural networks by calculating gradients', 'Forward propagation only', 'No gradient calculation', 'Random propagation'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_intermediate_2',
+    text: 'What is a Convolutional Neural Network (CNN)?',
+    answer: 'Neural network designed for processing grid-like data such as images.',
+    options: ['Neural network designed for processing grid-like data such as images', 'Network for text only', 'No grid processing', 'Random network'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_intermediate_3',
+    text: 'What is a Recurrent Neural Network (RNN)?',
+    answer: 'Neural network for processing sequential data.',
+    options: ['Neural network for processing sequential data', 'Network for static data only', 'No sequence processing', 'Random network'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_intermediate_4',
+    text: 'What is LSTM?',
+    answer: 'Long Short-Term Memory network for long-term dependencies.',
+    options: ['Long Short-Term Memory network for long-term dependencies', 'Short-term memory only', 'No memory capability', 'Random memory'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_intermediate_5',
+    text: 'What is Transformer Architecture?',
+    answer: 'Neural network architecture using attention mechanisms.',
+    options: ['Neural network architecture using attention mechanisms', 'Simple feed-forward network', 'No attention mechanism', 'Random architecture'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_intermediate_6',
+    text: 'What is Attention Mechanism?',
+    answer: 'Technique to focus on relevant parts of input data.',
+    options: ['Technique to focus on relevant parts of input data', 'No focus mechanism', 'Random attention', 'Equal attention to all parts'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_intermediate_7',
+    text: 'What is Transfer Learning?',
+    answer: 'Using pre-trained models for new tasks.',
+    options: ['Using pre-trained models for new tasks', 'Training from scratch only', 'No transfer possible', 'Random transfer'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_intermediate_8',
+    text: 'What is Fine-tuning?',
+    answer: 'Adjusting pre-trained models for specific tasks.',
+    options: ['Adjusting pre-trained models for specific tasks', 'No adjustment needed', 'Random adjustment', 'Delete all adjustments'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_intermediate_9',
+    text: 'What is Data Augmentation?',
+    answer: 'Technique to increase training data diversity.',
+    options: ['Technique to increase training data diversity', 'Reduce data diversity', 'No augmentation needed', 'Random augmentation'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_intermediate_10',
+    text: 'What is Regularization?',
+    answer: 'Techniques to prevent overfitting.',
+    options: ['Techniques to prevent overfitting', 'Techniques to cause overfitting', 'No regularization needed', 'Random regularization'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+
+  // AI Questions - Advanced Level
+  {
+    id: 'ai_advanced_1',
+    text: 'What is Generative Adversarial Networks (GANs)?',
+    answer: 'Two neural networks competing to generate realistic data.',
+    options: ['Two neural networks competing to generate realistic data', 'Single network generation', 'No competition involved', 'Random generation'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_advanced_2',
+    text: 'What is Reinforcement Learning?',
+    answer: 'Learning through interaction with environment using rewards.',
+    options: ['Learning through interaction with environment using rewards', 'Learning without interaction', 'No rewards involved', 'Random learning'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_advanced_3',
+    text: 'What is Q-Learning?',
+    answer: 'Model-free reinforcement learning algorithm.',
+    options: ['Model-free reinforcement learning algorithm', 'Model-based learning only', 'No learning algorithm', 'Random algorithm'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_advanced_4',
+    text: 'What is Natural Language Processing (NLP)?',
+    answer: 'AI field for understanding and generating human language.',
+    options: ['AI field for understanding and generating human language', 'AI for numbers only', 'No language processing', 'Random processing'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_advanced_5',
+    text: 'What is Computer Vision?',
+    answer: 'AI field for understanding visual information from images and videos.',
+    options: ['AI field for understanding visual information from images and videos', 'AI for text only', 'No visual understanding', 'Random vision'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_advanced_6',
+    text: 'What is BERT?',
+    answer: 'Pre-trained transformer model for NLP tasks.',
+    options: ['Pre-trained transformer model for NLP tasks', 'Simple neural network', 'No pre-training', 'Random model'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_advanced_7',
+    text: 'What is GPT?',
+    answer: 'Generative Pre-trained Transformer for language tasks.',
+    options: ['Generative Pre-trained Transformer for language tasks', 'Simple text generator', 'No pre-training involved', 'Random transformer'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_advanced_8',
+    text: 'What is Embedding?',
+    answer: 'Low-dimensional representation of data.',
+    options: ['Low-dimensional representation of data', 'High-dimensional only', 'No representation needed', 'Random embedding'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_advanced_9',
+    text: 'What is Model Deployment?',
+    answer: 'Process of making trained models available for use.',
+    options: ['Process of making trained models available for use', 'Keep models training only', 'No deployment needed', 'Random deployment'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
+  },
+  {
+    id: 'ai_advanced_10',
+    text: 'What is MLOps?',
+    answer: 'DevOps practices applied to machine learning workflows.',
+    options: ['DevOps practices applied to machine learning workflows', 'Traditional DevOps only', 'No MLOps needed', 'Random practices'],
+    role: 'Full Stack Developer',
+    skills: ['AI']
   }
 ];

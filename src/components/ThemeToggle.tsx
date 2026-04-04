@@ -12,7 +12,7 @@ export default function ThemeToggle() {
         const newMode = theme.mode === 'light' ? 'dark' : theme.mode === 'dark' ? 'auto' : 'light';
         setTheme(newMode);
       }}
-      className="p-2 rounded-lg transition-colors bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300"
+      className="p-2 rounded-lg transition-colors bg-gray-100 hover:bg-gray-200 text-gray-700"
       title={`Current theme: ${theme.mode}`}
       aria-label="Toggle theme"
     >
